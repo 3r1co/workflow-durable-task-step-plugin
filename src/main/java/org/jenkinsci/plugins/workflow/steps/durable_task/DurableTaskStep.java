@@ -184,7 +184,7 @@ public abstract class DurableTaskStep extends Step {
                 // RequestAbortedException, ChannelClosedException, EOFException, wrappers thereof; InterruptedException if it just takes too long.
                 LOGGER.log(Level.FINE, node + " is evidently offline now", x);
                 ws = null;
-                logger().println("Cannot contact " + node + ": " + x); // TODO should we throttle messages of this type; e.g., exponentially slow them down?
+                LOGGER.log(Level.FINE, "Cannot contact " + node + ": " + x); // TODO should we throttle messages of this type; e.g., exponentially slow them down?
                 return null;
             }
             if (!directory) {
@@ -324,7 +324,7 @@ public abstract class DurableTaskStep extends Step {
             } catch (Exception x) {
                 LOGGER.log(Level.FINE, "could not check " + workspace, x);
                 ws = null;
-                logger().println("Cannot contact " + node + ": " + x); // TODO as above
+                LOGGER.log(Level.FINE, "Cannot contact " + node + ": " + x); // TODO as above
             }
         }
 
